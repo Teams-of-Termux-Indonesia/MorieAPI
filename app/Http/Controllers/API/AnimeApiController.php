@@ -15,47 +15,81 @@ class AnimeApiController extends Controller
     public function listAnime ()
     {
         $client = new Client();
-        $page = $client->request("GET", self::URL . "/anime-list");
-        $result = [];
         
-        $this->result["data"] = [];
-        $this->result["catalog"] = [];
-        $page->filter("#abtext .bariskelom")->each(function ($list) {
-          $catalog = $list->filter(".barispenz")->text();
-          $this->result["catalog"][$catalog] = [];
+        try {
+          $page = $client->request("GET", self::URL . "/anime-list");
           
-          $list->filter(".jdlbar .hodebgst")->each(function($anime) use ($catalog) {
-            $title = $anime->text();
-            $status = $anime->filter("color")->text();
-            $desc = $anime->attr("title");
-            $link = $anime->attr("href");
-            $id = $anime->attr("href");
+          $this->result["data"] = [];
+          $this->result["catalog"] = [];
+          $page->filter("#abtext .bariskelom")->each(function ($list) {
+            $catalog = $list->filter(".barispenz")->text();
+            $this->result["catalog"][$catalog] = [];
             
-            /* replacement */
-            $title = str_replace($status, "", $title);
-            $id = substr(str_replace(self::URL."/anime/", "", $id), 0, -1);
-            
-            /* passing */
-            $data["title"] = $title;
-            $data["description"] = $desc;
-            $data["link"] = $link;
-            $data["id"] = $id;
-            $data["status"] = strtolower($status !== "" ? $status : "completed");
-            
-            $this->result["data"][] = $data;
-            $this->result["catalog"][$catalog][] = $data;
+            $list->filter(".jdlbar .hodebgst")->each(function($anime) use ($catalog) {
+              $title = $anime->text();
+              $status = $anime->filter("color")->text();
+              $desc = $anime->attr("title");
+              $link = $anime->attr("href");
+              $id = $anime->attr("href");
+              
+              /* replacement */
+              $title = str_replace($status, "", $title);
+              $id = substr(str_replace(self::URL."/anime/", "", $id), 0, -1);
+              
+              /* passing */
+              $data["title"] = $title;
+              $data["description"] = $desc;
+              $data["link"] = $link;
+              $data["id"] = $id;
+              $data["status"] = strtolower($status !== "" ? $status : "completed");
+              
+              $this->result["data"][] = $data;
+              $this->result["catalog"][$catalog][] = $data;
+            });
           });
-        });
+          
+          return $this->result;
+        } catch (\Exception ) {
+          abort(404);
+        }
         
-        return json_encode($this->result);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function detailAnime(Request $request)
     {
-        //
+        $client = new Client();
+        
+        try {
+          $page = $client->request("GET", self::URL . "/anime/". $request->id);
+          
+          $this->result["data"]["thumbnail"] = $page->filter(".fotoanime img")->attr("src");
+          
+          $page->filter(".venser .fotoanime .infozin .infozingle p")->each(function ($info){
+            $key = strtolower($info->filter("b")->text());
+            $value = trim(substr(str_replace($info->filter("b")->text(), "", $info->filter("span")->text()), 1));
+            $this->result["data"][$key] = $value;
+          });
+          
+          $page->filter(".episodelist")->each(function ($element){
+            $total = $element->filter("ul li")->count();
+            $type = $total > 1 ? "episode_list" : "batch";
+            
+            $data = [];
+            $element->filter("ul li")->each();
+            
+            if ($type === "batch") {
+              
+            }
+            else $this->result["data"]["metadata"][$type] = [];
+          });
+          
+          return $this->result;
+        } catch (\Exception $e) {
+          abort(404);
+        }
     }
 
     /**

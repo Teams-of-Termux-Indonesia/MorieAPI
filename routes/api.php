@@ -14,7 +14,7 @@ use App\Http\Controllers\API\AnimeApiController;
 |
 */
 
-Route::controller(\App\Http\Controllers\API\AnimeApiController::class)->group(function(){
+Route::controller(AnimeApiController::class)->group(function(){
   Route::get("/anime/all", "listAnime");
-  Route::get("/anime/completed", "completed");
+  Route::get("/anime/{id}", "detailAnime");
 });
