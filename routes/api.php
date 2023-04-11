@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\AnimeApiController;
+use App\Http\Controllers\API\Fdev\AnimeApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
