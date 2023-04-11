@@ -209,7 +209,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-      "Goutte" => Weidner\Goutte\GoutteFacade::class
+        'Goutte' => Weidner\Goutte\GoutteFacade::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
