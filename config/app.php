@@ -194,6 +194,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\RAPServiceProvider::class,
 
     ],
 
@@ -210,6 +211,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Goutte' => Weidner\Goutte\GoutteFacade::class,
+        'RAP_Facebook' => App\Helpers\RAP\RAP_Facebook::class,
+        'RAP_Youtube' => App\Helpers\RAP\RAP_Youtube::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

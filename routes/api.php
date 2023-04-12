@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AnimeApiController;
+use App\Http\Controllers\RAPController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +15,9 @@ use App\Http\Controllers\API\AnimeApiController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::controller(RAPController::class)->group(function () {
+    Route::prefix('rap')->group(function () {
+        Route::get('/facebook/downloader/{url}', 'facebook')->where('url', '.*');
+        Route::get('/youtube/downloader/{url}', 'youtube')->where('url', '.*');
+    });
 });

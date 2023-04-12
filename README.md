@@ -1,6 +1,7 @@
 # Morie API
 
+## Facebook API
+
 ```bash
-composer install
-composer update
+http://hostname/api/rap/facebook/downloader/<url>
 ```
