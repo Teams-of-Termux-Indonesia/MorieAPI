@@ -82,7 +82,7 @@ class AnimeApiController extends Controller
           
           $synopsis = $page->filter(".sinopc")->text();
           try {
-            $this->result["data"]["synopsis"] = GoogleTranslate::trans($synopsis, $request->lang ?? "id", "id");
+            if ($request->lang) $this->result["data"]["synopsis"] = GoogleTranslate::trans($synopsis, $request->lang, "id");
           } catch (\Exception $e) {
             if ($request->lang) $this->result["data"]["synopsis"] = GoogleTranslate::trans($synopsis, "en", "id");
             else $this->result["data"]["synopsis"] = $synopsis;
