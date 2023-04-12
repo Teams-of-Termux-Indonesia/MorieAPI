@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API\Fdev;
 
 use App\Helpers\Fdev\Libraries\Otakudesu;
 use App\Http\Controllers\Controller;
-use App\Models\Anime;
-
+use App\Models\Fdev\Anime;
 use Illuminate\Http\Request;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 use Goutte\Client;
 
 class AnimeApiController extends Controller
@@ -67,10 +67,26 @@ class AnimeApiController extends Controller
           $this->result["time"] = time();
           
           $page->filter(".venser .fotoanime .infozin .infozingle p")->each(function ($info){
-            $key = strtolower($info->filter("b")->text());
+            $key = preg_replace(
+              "/(\s)+/",
+              "_",
+              GoogleTranslate::trans(
+                strtolower($info->filter("b")->text()),
+                "en",
+                "id"
+              )
+            );
             $value = trim(substr(str_replace($info->filter("b")->text(), "", $info->filter("span")->text()), 1));
             $this->result["data"][$key] = $value;
           });
+          
+          $synopsis = $page->filter(".sinopc")->text();
+          try {
+            $this->result["data"]["synopsis"] = GoogleTranslate::trans($synopsis, $request->lang ?? "id", "id");
+          } catch (\Exception $e) {
+            if ($request->lang) $this->result["data"]["synopsis"] = GoogleTranslate::trans($synopsis, "en", "id");
+            else $this->result["data"]["synopsis"] = $synopsis;
+          }
           
           $page->filter(".episodelist")->each(function ($episodeContainer){
             $total = $episodeContainer->filter("ul li")->count();
@@ -119,32 +135,4 @@ class AnimeApiController extends Controller
         }
     }
     
-    public function show(Anime $anime)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Anime $anime)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Anime $anime)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Anime $anime)
-    {
-        //
-    }
 }
