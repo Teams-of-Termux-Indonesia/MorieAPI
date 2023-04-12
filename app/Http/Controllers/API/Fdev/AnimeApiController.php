@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Fdev;
 
+use App\Helpers\Fdev\Libraries\Otakudesu;
 use App\Http\Controllers\Controller;
 use App\Models\Anime;
+
 use Illuminate\Http\Request;
 use Goutte\Client;
 
@@ -30,11 +32,10 @@ class AnimeApiController extends Controller
               $status = $anime->filter("color")->text();
               $desc = $anime->attr("title");
               $link = $anime->attr("href");
-              $id = $anime->attr("href");
+              $id = substr(str_replace(self::URL."/anime/", "", $link), 0, -1);
               
               /* replacement */
               $title = str_replace($status, "", $title);
-              $id = substr(str_replace(self::URL."/anime/", "", $id), 0, -1);
               
               /* passing */
               $data["title"] = $title;
@@ -49,15 +50,12 @@ class AnimeApiController extends Controller
           });
           
           return $this->result;
-        } catch (\Exception ) {
+        } catch (\Exception $e) {
           abort(404);
         }
         
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function detailAnime(Request $request)
     {
         $client = new Client();
@@ -66,6 +64,7 @@ class AnimeApiController extends Controller
           $page = $client->request("GET", self::URL . "/anime/". $request->id);
           
           $this->result["data"]["thumbnail"] = $page->filter(".fotoanime img")->attr("src");
+          $this->result["time"] = time();
           
           $page->filter(".venser .fotoanime .infozin .infozingle p")->each(function ($info){
             $key = strtolower($info->filter("b")->text());
@@ -73,36 +72,53 @@ class AnimeApiController extends Controller
             $this->result["data"][$key] = $value;
           });
           
-          $page->filter(".episodelist")->each(function ($element){
-            $total = $element->filter("ul li")->count();
+          $page->filter(".episodelist")->each(function ($episodeContainer){
+            $total = $episodeContainer->filter("ul li")->count();
             $type = $total > 1 ? "episode_list" : "batch";
             
             $data = [];
-            $element->filter("ul li")->each();
             
-            if ($type === "batch") {
+            $episodeContainer->filter("ul li")->each(function ($list, $index) use ($type) {
+              $link = $list->filter("a")->attr("href");
+              $date = $list->filter(".zeebr")->text();
               
-            }
-            else $this->result["data"]["metadata"][$type] = [];
+              if ($type === "batch") {
+                $this->result["data"]["metadata"][$type] = [
+                    "name" => "batch download",
+                    "link" => $link,
+                    "date" => $date 
+                ];
+              } else {
+                $id = substr(str_replace(self::URL."/episode/", "", $link), 0, -1);
+                $this->result["data"]["metadata"][$type][] = [
+                    "id" => $id,
+                    "name" => sprintf("episode %s", $index + 1),
+                    "link" => $link,
+                    "uploaded_at" => $date,
+                    "metadata" => (new Otakudesu)->linkDownloads($link)
+                ];
+              }
+              
+            });
+            
           });
           
           return $this->result;
         } catch (\Exception $e) {
+          if (is_production()) dd($e);
           abort(404);
         }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    
+    public function detailEpisode(Request $request)
     {
-        //
+        $client = new Client();
+        try {
+          $client->request("GET", self::URL + "/anime/");
+        } catch (\Exception $e) {
+        }
     }
-
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Anime $anime)
     {
         //

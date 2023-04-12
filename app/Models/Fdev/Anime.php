@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Anime extends Model
 {
     use HasFactory;
+    protected $guarded = ["id"];
+    protected $table = "otaku_animes";
+    
+    
 }
