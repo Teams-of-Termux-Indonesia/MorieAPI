@@ -1,17 +1,39 @@
 <?php
 namespace App\Models;
 use Goutte\Client;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 class ScrapAnime{
-    private $spring=[];
+    private $springs=[];
     private $news=[];
+    private $looks=[];
+    public function teks($teks){
+        $tr=new GoogleTranslate();
+        $tr->setSource('en');
+        $tr->setTarget('id');
+        return $tr->translate($teks);
+    }
     public function getSpring(){
         $site = $this -> get("https://myanimelist.net/anime/season");
         $site -> filter('div.seasonal-anime-list.js-seasonal-anime-list.js-seasonal-anime-list-key-1')->each(function($parent){
             $parent->filter('div.js-anime-category-producer.seasonal-anime.js-seasonal-anime.js-anime-type-all.js-anime-type-1')->each(function($childen1){
-                array_push($this->spring,$childen1->text());
+                array_push($this->springs,[
+                    "header"=>[
+                        "title"=>$childen1->filter('div.title div.title-text')->text(),
+                        "info_product"=>$childen1->filter('div.prodsrc div.info')->text(),
+                        "genres"=>$childen1->filter('div.genres-inner.js-genre-inner')->text(),
+                    ],
+                    "body"=>[
+                        "image"=>[
+                            "src"=>$childen1->filter('div.image a img')->attr('src'),
+                            "width"=>$childen1->filter('div.image a img')->attr('width'),
+                            "height"=>$childen1->filter('div.image a img')->attr('height')
+                        ],
+                        "synopsis"=>$this->teks($childen1->filter('div.synopsis.js-synopsis')->text('p')),
+                    ]
+                ]);
             });
         });
-        return $this->spring;
+        return $this->springs;
     }
     public function getNews(){
        $site = $this -> get("https://www.kaorinusantara.or.id/rubrik/aktual/anime");
@@ -35,7 +57,18 @@ class ScrapAnime{
        });
        return $this->news;
     }
-    // BluePrint Request get
+    public function getLoli(){
+        // $site = $this ->get("https://id.pinterest.com/lolikylee/anime-kawaii/");
+        // $site -> filter('div.vbI.XiG')->each(function($childen1){
+        //     $childen1 -> filter('div.XiG.zI7.iyn.Hsu')->each(function($childen1){
+        //                 array_push($this->looks,$childen1->filter('img.hCL.kVc.L4E.MIw')->attr('src'));
+        //     });
+        // });
+        // // $site -> 
+        return $this->looks;
+    }
+
+    
     public function get($url){
         $client = new Client();
         return $client->request("GET",$url);
