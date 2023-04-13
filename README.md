@@ -30,25 +30,25 @@ http://localhost/api/rap/gmail/send/?email=xxxxx@gmail.com&password=xxxxxxxxxx&n
 ### Facebook API
 
 ```bash
-http://localhost/api/rap/facebook/video/<url>
+http://localhost/api/rap/facebook/video/?url=<url>
 ```
 
 ### Instagram API
 
 ```bash
-http://localhost/api/rap/instagram/profile/<url>
+http://localhost/api/rap/instagram/profile/?url=<url>
 ```
 
 ### YouTube API
 
 ```bash
-http://localhost/api/rap/youtube/video/<url>
-http://localhost/api/rap/youtube/channel/<url>
+http://localhost/api/rap/youtube/video/?url=<url>
+http://localhost/api/rap/youtube/channel/?url=<url>
 ```
 
 ### TikTok API
 
 ```bash
-http://localhost/api/rap/tiktok/video/<url>
-http://localhost/api/rap/tiktok/audio/<url>
+http://localhost/api/rap/tiktok/video/?url=<url>
+http://localhost/api/rap/tiktok/audio/?url=<url>
 ```
