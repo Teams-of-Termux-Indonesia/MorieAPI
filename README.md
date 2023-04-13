@@ -5,13 +5,13 @@ Morie API is a collection of free APIs that you can use whenever you need, just 
 ### Get your IP address
 
 ```bash
-http://hostname/api/rap/ip
+http://localhost/api/rap/ip
 ```
 
 ### Send Gmail API Messages
 
 ```bash
-http://hostname/api/rap/gmail/send/
+http://localhost/api/rap/gmail/send/
 ```
 
 -   email : Enter your email as the sender.
