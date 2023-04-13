@@ -24,4 +24,7 @@ class RyuController extends Controller
         // echo "<pre>".json_encode(['data'=>$this->scrap->getLoli()])."</pre>";
         dd($this->scrap->getLoli());
     }
+    public function donghua(){
+        
+    }
 }
