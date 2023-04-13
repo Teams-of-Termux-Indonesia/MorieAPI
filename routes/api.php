@@ -17,7 +17,18 @@ use App\Http\Controllers\RAPController;
 
 Route::controller(RAPController::class)->group(function () {
     Route::prefix('rap')->group(function () {
-        Route::get('/facebook/downloader/{url}', 'facebook')->where('url', '.*');
-        Route::get('/youtube/downloader/{url}', 'youtube')->where('url', '.*');
+        Route::prefix('facebook')->group(function () {
+            Route::get('/videos', 'facebook_videos');
+        });
+
+        Route::prefix('tiktok')->group(function () {
+            Route::get('/videos', 'tiktok_videos');
+            Route::get('/audios', 'tiktok_audios');
+        });
+
+        Route::prefix('youtube')->group(function () {
+            Route::get('/videos', 'youtube_videos');
+            Route::get('/channels', 'youtube_channels');
+        });
     });
 });

@@ -8,7 +8,18 @@ use Exception;
 class RAP_Facebook
 {
 
-    public static function download($url)
+    public static function setUrl($url, $type)
+    {
+        if ($url) {
+            if ($type == 'video') {
+                return RAP_Facebook::getVideo($url);
+            }
+        } else {
+            return json_encode(['message' => 'Please provide the URL']);
+        }
+    }
+
+    public static function getVideo($url)
     {
         header('Content-Type: application/json');
 
@@ -50,9 +61,12 @@ class RAP_Facebook
 
             $msg['success'] = true;
 
+            $detail = explode(' | ', RAP_Facebook::getTitle($data));
+
             $msg['id'] = RAP_Facebook::generateId($url);
-            $msg['title'] = RAP_Facebook::getTitle($data);
+            $msg['title'] = $detail[0];
             $msg['description'] = RAP_Facebook::getDescription($data);
+            $msg['author'] = trim(preg_replace("/By/", "", $detail[2]));
 
             if ($sdLink = RAP_Facebook::getSDLink($data)) {
                 $msg['links']['video_sd'] = $sdLink;
@@ -63,10 +77,10 @@ class RAP_Facebook
             }
         } catch (Exception $e) {
             $msg['success'] = false;
-            $msg['message'] = $e->getMessage();
+            $msg['message'] = 'Please provide a valid url';
         }
 
-        echo json_encode($msg);
+        return json_encode($msg);
     }
 
     public static function generateId($url)

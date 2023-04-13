@@ -213,6 +213,7 @@ return [
         'Goutte' => Weidner\Goutte\GoutteFacade::class,
         'RAP_Facebook' => App\Helpers\RAP\RAP_Facebook::class,
         'RAP_Youtube' => App\Helpers\RAP\RAP_Youtube::class,
+        'RAP_Tiktok' => App\Helpers\RAP\RAP_Tiktok::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
