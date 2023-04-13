@@ -8,14 +8,14 @@ Morie API is a collection of free APIs that you can use whenever you need, just 
 http://hostname/api/rap/facebook/videos/<url>
 ```
 
-### Youtube API
+### YouTube API
 
 ```bash
 http://hostname/api/rap/youtube/videos/<url>
 http://hostname/api/rap/youtube/channels/<url>
 ```
 
-### Tiktok API
+### TikTok API
 
 ```bash
 http://hostname/api/rap/tiktok/videos/<url>
