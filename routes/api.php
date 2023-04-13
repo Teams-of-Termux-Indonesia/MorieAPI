@@ -18,6 +18,7 @@ use App\Http\Controllers\RAPController;
 Route::controller(RAPController::class)->group(function () {
     Route::prefix('rap')->group(function () {
         Route::get('/ip', 'ip');
+        Route::get('/gmail/send', 'gmail_send');
 
         Route::prefix('facebook')->group(function () {
             Route::get('/video', 'facebook_video');
