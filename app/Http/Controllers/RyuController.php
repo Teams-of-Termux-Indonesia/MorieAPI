@@ -14,7 +14,8 @@ class RyuController extends Controller
     }
 
     public function index(){
-       dd($this -> scrap->getSpring());
+        echo "<pre>".json_encode(['data'=>$this->scrap->getSpring()])."</pre>";
+    //    dd($this -> scrap->getSpring());
     }
     public function news(){
         echo "<pre>".json_encode(['data'=>$this->scrap->getNews()])."</pre>";
