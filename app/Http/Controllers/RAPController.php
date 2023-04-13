@@ -10,6 +10,11 @@ use App\Helpers\RAP\RAP_Instagram;
 
 class RAPController extends Controller
 {
+    public function ip(Request $request)
+    {
+        return json_encode(['success' => true, 'ip_address' => $request->ip()]);
+    }
+
     public function facebook_video(Request $request)
     {
         $url = trim($request->get('url'));
