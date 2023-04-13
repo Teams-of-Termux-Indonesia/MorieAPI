@@ -16,6 +16,7 @@ class RAPServiceProvider extends ServiceProvider
         require_once app_path() . '/Helpers/RAP/RAP_Facebook.php';
         require_once app_path() . '/Helpers/RAP/RAP_Youtube.php';
         require_once app_path() . '/Helpers/RAP/RAP_Tiktok.php';
+        require_once app_path() . '/Helpers/RAP/RAP_Instagram.php';
     }
 
     /**

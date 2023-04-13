@@ -5,19 +5,25 @@ Morie API is a collection of free APIs that you can use whenever you need, just 
 ### Facebook API
 
 ```bash
-http://hostname/api/rap/facebook/videos/<url>
+http://hostname/api/rap/facebook/video/<url>
+```
+
+### Instagram API
+
+```bash
+http://hostname/api/rap/instagram/profile/<url>
 ```
 
 ### YouTube API
 
 ```bash
-http://hostname/api/rap/youtube/videos/<url>
-http://hostname/api/rap/youtube/channels/<url>
+http://hostname/api/rap/youtube/video/<url>
+http://hostname/api/rap/youtube/channel/<url>
 ```
 
 ### TikTok API
 
 ```bash
-http://hostname/api/rap/tiktok/videos/<url>
-http://hostname/api/rap/tiktok/audios/<url>
+http://hostname/api/rap/tiktok/video/<url>
+http://hostname/api/rap/tiktok/audio/<url>
 ```

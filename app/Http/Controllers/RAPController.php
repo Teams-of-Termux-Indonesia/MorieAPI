@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use App\Helpers\RAP\RAP_Facebook;
 use App\Helpers\RAP\RAP_Youtube;
 use App\Helpers\RAP\RAP_Tiktok;
+use App\Helpers\RAP\RAP_Instagram;
 
 class RAPController extends Controller
 {
-    public function facebook_videos(Request $request)
+    public function facebook_video(Request $request)
     {
         $url = trim($request->get('url'));
 
@@ -20,7 +21,7 @@ class RAPController extends Controller
         }
     }
 
-    public function youtube_videos(Request $request)
+    public function youtube_video(Request $request)
     {
         $url = trim($request->get('url'));
 
@@ -31,7 +32,7 @@ class RAPController extends Controller
         }
     }
 
-    public function youtube_channels(Request $request)
+    public function youtube_channel(Request $request)
     {
         $url = trim($request->get('url'));
 
@@ -42,7 +43,7 @@ class RAPController extends Controller
         }
     }
 
-    public function tiktok_videos(Request $request)
+    public function tiktok_video(Request $request)
     {
         $url = trim($request->get('url'));
 
@@ -53,7 +54,7 @@ class RAPController extends Controller
         }
     }
 
-    public function tiktok_audios(Request $request)
+    public function tiktok_audio(Request $request)
     {
         $url = trim($request->get('url'));
 
@@ -63,4 +64,48 @@ class RAPController extends Controller
             return json_encode(['success' => false, 'message' => 'Please provide the URL']);
         }
     }
+
+    public function instagram_profile(Request $request)
+    {
+        $url = trim($request->get('url'));
+
+        if ($url) {
+            return RAP_Instagram::setUrl($url, 'profile');
+        } else {
+            return json_encode(['success' => false, 'message' => 'Please provide the URL']);
+        }
+    }
+
+    // public function instagram_video(Request $request)
+    // {
+    //     $url = trim($request->get('url'));
+
+    //     if ($url) {
+    //         return RAP_Instagram::setUrl($url, 'video');
+    //     } else {
+    //         return json_encode(['success' => false, 'message' => 'Please provide the URL']);
+    //     }
+    // }
+
+    // public function instagram_reel(Request $request)
+    // {
+    //     $url = trim($request->get('url'));
+
+    //     if ($url) {
+    //         return RAP_Instagram::setUrl($url, 'reel');
+    //     } else {
+    //         return json_encode(['success' => false, 'message' => 'Please provide the URL']);
+    //     }
+    // }
+
+    // public function instagram_image(Request $request)
+    // {
+    //     $url = trim($request->get('url'));
+
+    //     if ($url) {
+    //         return RAP_Instagram::setUrl($url, 'image');
+    //     } else {
+    //         return json_encode(['success' => false, 'message' => 'Please provide the URL']);
+    //     }
+    // }
 }

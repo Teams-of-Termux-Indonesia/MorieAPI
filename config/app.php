@@ -214,6 +214,7 @@ return [
         'RAP_Facebook' => App\Helpers\RAP\RAP_Facebook::class,
         'RAP_Youtube' => App\Helpers\RAP\RAP_Youtube::class,
         'RAP_Tiktok' => App\Helpers\RAP\RAP_Tiktok::class,
+        'RAP_Instagram' => App\Helpers\RAP\RAP_Instagram::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
