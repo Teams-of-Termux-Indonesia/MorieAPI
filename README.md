@@ -24,31 +24,31 @@ http://hostname/api/rap/gmail/send/
 #### Example
 
 ```bash
-http://hostname/api/rap/gmail/send/?email=xxxxx@gmail.com&password=xxxxxxxxxx&name=Jhon Doe&title=Hari, here is a message for you&message=How are you?&to=xxxxx@gmail.com
+http://localhost/api/rap/gmail/send/?email=xxxxx@gmail.com&password=xxxxxxxxxx&name=Jhon Doe&title=Hari, here is a message for you&message=How are you?&to=xxxxx@gmail.com
 ```
 
 ### Facebook API
 
 ```bash
-http://hostname/api/rap/facebook/video/<url>
+http://localhost/api/rap/facebook/video/<url>
 ```
 
 ### Instagram API
 
 ```bash
-http://hostname/api/rap/instagram/profile/<url>
+http://localhost/api/rap/instagram/profile/<url>
 ```
 
 ### YouTube API
 
 ```bash
-http://hostname/api/rap/youtube/video/<url>
-http://hostname/api/rap/youtube/channel/<url>
+http://localhost/api/rap/youtube/video/<url>
+http://localhost/api/rap/youtube/channel/<url>
 ```
 
 ### TikTok API
 
 ```bash
-http://hostname/api/rap/tiktok/video/<url>
-http://hostname/api/rap/tiktok/audio/<url>
+http://localhost/api/rap/tiktok/video/<url>
+http://localhost/api/rap/tiktok/audio/<url>
 ```
