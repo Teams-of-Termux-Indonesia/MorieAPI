@@ -14,18 +14,12 @@ http://hostname/api/rap/ip
 http://hostname/api/rap/gmail/send/
 ```
 
--   email
-    Enter your email as the sender.
--   password
-    fill in your gmail account application password.
--   name
-    fill in your email account name.
--   title
-    Enter the title of your message.
--   message
-    the contents of the message what you want to send change the text or html code.
--   to
-    Fill in the destination email that you want to send the message to.
+-   email : Enter your email as the sender.
+-   password : fill in your gmail account application password.
+-   name : fill in your email account name.
+-   title : Enter the title of your message.
+-   message : the contents of the message what you want to send change the text or html code.
+-   to : Fill in the destination email that you want to send the message to.
 
 #### Example
 
