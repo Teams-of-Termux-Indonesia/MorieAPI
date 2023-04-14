@@ -48,12 +48,7 @@ Route::controller(RAPController::class)->group(function () {
 
 
 Route::controller(AnimeApiController::class)->prefix("fdev")->group(function(){
-
   Route::get("/anime/all", "listAnime");
-
-  Route::get("/anime/{id}", "detailAnime");
-
-  Route::get("/anime/{anime}/episode/{id}", "detailEpisode");
-
+  Route::get("/anime/{uid}", "detailAnime");
+  Route::get("/anime/seaech", "searchAnime");
 });
-

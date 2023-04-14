@@ -67,3 +67,19 @@ http://localhost/api/rap/youtube/channel/?url=<url>
 http://localhost/api/rap/tiktok/video/?url=<url>
 http://localhost/api/rap/tiktok/audio/?url=<url>
 ```
+
+
+### Otakudesu API
+
+- All
+  ```url
+  http://localhost/api/fdev/anime/all
+  ```
+- Specific Anime
+  ```url
+  http://localhost/api/fdev/anime/:uid
+  ```
+
+
+
+> © Teams of Termux Indonesia 2023

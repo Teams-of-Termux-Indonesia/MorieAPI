@@ -9,6 +9,9 @@ class Anime extends Model
 {
     use HasFactory;
     protected $guarded = ["id"];
+    protected $casts = [
+      "metadata" => "array"
+    ];
     protected $table = "otaku_animes";
     
     
