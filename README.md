@@ -4,7 +4,9 @@ Morie API is a collection of free APIs that you can use whenever you need, just 
 
 
 
-
+<div align="center">
+    <img src="/icon.png" alt="icon">
+</div>
 
 
 ## get anime news
