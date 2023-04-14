@@ -5,7 +5,7 @@ Morie API is a collection of free APIs that you can use whenever you need, just 
 
 
 <div align="center">
-    <img src="/icon.png" alt="icon">
+    <img src="/icon.png" alt="icon" width="320px">
 </div>
 
 
@@ -80,6 +80,8 @@ http://localhost/api/rap/tiktok/audio/?url=<url>
   http://localhost/api/fdev/anime/:uid
   ```
 
+
+__
 
 
 > © Teams of Termux Indonesia 2023
