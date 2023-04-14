@@ -10,14 +10,14 @@ ____
 
 ____
 
-## get recent earthquake [BMKG INDONESIA 🇮🇩]
+## Get recent earthquake [BMKG INDONESIA 🇮🇩]
 
 ```url
 http://localhost/api/senpai/gempa/terkini
 ```
 
 
-## get anime news
+## Get anime news
 
 ```url
 http://localhost/api/senpai/anime/news
