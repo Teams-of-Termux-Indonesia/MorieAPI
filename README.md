@@ -2,7 +2,7 @@
 
 Morie API is a collection of free APIs that you can use whenever you need, just like the name Morie comes from Japanese which means a forest with many trees, that's how this project describes a collection of APIs or is called a tree.
 
-### Get your IP address
+### Get your IP Address
 
 ```bash
 http://localhost/api/rap/ip
@@ -24,7 +24,7 @@ http://localhost/api/rap/gmail/send/
 #### Example
 
 ```bash
-http://localhost/api/rap/gmail/send/?email=xxxxx@gmail.com&password=xxxxxxxxxx&name=Jhon Doe&title=Hari, here is a message for you&message=How are you?&to=xxxxx@gmail.com
+http://localhost/api/rap/gmail/send/?email=xxxxx@gmail.com&password=xxxxxxxxxx&name=Jhon Doe&title=Hi, here is a message for you&message=How are you?&to=xxxxx@gmail.com
 ```
 
 ### Facebook API
