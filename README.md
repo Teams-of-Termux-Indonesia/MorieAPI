@@ -10,6 +10,13 @@ ____
 
 ____
 
+## get recent earthquake [BMKG INDONESIA 🇮🇩]
+
+```url
+http://localhost/api/senpai/gempa/terkini
+```
+
+
 ## get anime news
 
 ```url
