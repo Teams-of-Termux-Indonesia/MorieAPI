@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RyuController;
-use App\Http\Controllers\API\AnimeApiController;
+use App\Http\Controllers\FdevController;
 use App\Http\Controllers\RAPController;
 
 Route::controller(RyuController::class)->prefix('senpai')->group(function(){
@@ -18,6 +18,7 @@ Route::controller(RyuController::class)->prefix('senpai')->group(function(){
     });
     Route::get('anime/news','news');
 });
+
 Route::controller(RAPController::class)->group(function () {
     Route::prefix('rap')->group(function () {
         Route::get('/ip', 'ip');
@@ -47,13 +48,13 @@ Route::controller(RAPController::class)->group(function () {
 });
 
 
-Route::controller(AnimeApiController::class)->prefix("fdev")->group(function(){
-
-  Route::get("/anime/all", "listAnime");
-
-  Route::get("/anime/{id}", "detailAnime");
-
-  Route::get("/anime/{anime}/episode/{id}", "detailEpisode");
-
+Route::controller(FdevController::class)->group(function(){
+  Route::prefix("fdev")->group(function(){
+    Route::prefix("/anime")->group(function(){
+      Route::get("/all", "anime_all");
+      Route::get("/{uid}", "anime_detail");
+      Route::get("/{uid}/episode/{episode}", "anime_episode");
+    });
+  });
 });
 
