@@ -2,15 +2,28 @@
 
 Morie API is a collection of free APIs that you can use whenever you need, just like the name Morie comes from Japanese which means a forest with many trees, that's how this project describes a collection of APIs or is called a tree.
 
+
+
+
+
+
+## get anime news
+
+```url
+http://localhost/api/senpai/anime/news
+```
+
+
+
 ### Get your IP address
 
-```bash
+```url
 http://localhost/api/rap/ip
 ```
 
 ### Send Gmail API Messages
 
-```bash
+```url
 http://localhost/api/rap/gmail/send/
 ```
 
@@ -23,32 +36,32 @@ http://localhost/api/rap/gmail/send/
 
 #### Example
 
-```bash
+```url
 http://localhost/api/rap/gmail/send/?email=xxxxx@gmail.com&password=xxxxxxxxxx&name=Jhon Doe&title=Hari, here is a message for you&message=How are you?&to=xxxxx@gmail.com
 ```
 
 ### Facebook API
 
-```bash
+```url
 http://localhost/api/rap/facebook/video/?url=<url>
 ```
 
 ### Instagram API
 
-```bash
+```url
 http://localhost/api/rap/instagram/profile/?url=<url>
 ```
 
 ### YouTube API
 
-```bash
+```url
 http://localhost/api/rap/youtube/video/?url=<url>
 http://localhost/api/rap/youtube/channel/?url=<url>
 ```
 
 ### TikTok API
 
-```bash
+```url
 http://localhost/api/rap/tiktok/video/?url=<url>
 http://localhost/api/rap/tiktok/audio/?url=<url>
 ```
