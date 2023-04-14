@@ -57,16 +57,6 @@ class ScrapAnime{
        });
        return $this->news;
     }
-    public function getLoli(){
-        // $site = $this ->get("https://id.pinterest.com/lolikylee/anime-kawaii/");
-        // $site -> filter('div.vbI.XiG')->each(function($childen1){
-        //     $childen1 -> filter('div.XiG.zI7.iyn.Hsu')->each(function($childen1){
-        //                 array_push($this->looks,$childen1->filter('img.hCL.kVc.L4E.MIw')->attr('src'));
-        //     });
-        // });
-        // // $site -> 
-        return $this->looks;
-    }
 
     
     public function get($url){

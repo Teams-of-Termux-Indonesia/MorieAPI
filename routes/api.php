@@ -12,7 +12,5 @@ Route::controller(RyuController::class)->prefix('senpai')->group(function(){
         </pre>
         ";
     });
-    Route::get('anime/spring','index');
     Route::get('anime/news','news');
-    Route::get('anime/loli','loli');
 });

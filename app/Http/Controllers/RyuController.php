@@ -12,19 +12,7 @@ class RyuController extends Controller
     {
         $this -> scrap = new ScrapAnime();
     }
-
-    public function index(){
-        echo "<pre>".json_encode(['data'=>$this->scrap->getSpring()])."</pre>";
-    //    dd($this -> scrap->getSpring());
-    }
-    public function news(){
-        echo "<pre>".json_encode(['data'=>$this->scrap->getNews()])."</pre>";
-    }
-    public function loli(){
-        // echo "<pre>".json_encode(['data'=>$this->scrap->getLoli()])."</pre>";
-        dd($this->scrap->getLoli());
-    }
-    public function donghua(){
-        
+    public function  news(){
+        return json_encode($this->scrap->getNews());     
     }
 }
