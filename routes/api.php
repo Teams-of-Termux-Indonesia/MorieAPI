@@ -17,6 +17,7 @@ Route::controller(RyuController::class)->prefix('senpai')->group(function(){
         ";
     });
     Route::get('anime/news','news');
+    Route::get('gempa/terkini','gempaTerkini');
 });
 Route::controller(RAPController::class)->group(function () {
     Route::prefix('rap')->group(function () {
