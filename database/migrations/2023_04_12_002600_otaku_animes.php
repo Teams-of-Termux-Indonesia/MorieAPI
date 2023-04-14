@@ -11,23 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('otaku_animes', function (Blueprint $table) {
             $table->id();
+            $table->text("uid")->unique();
             $table->text('title')->nullable();
             $table->text('japanese')->nullable();
             $table->text('score')->nullable();
-            $table->text('producers')->nullable();
+            $table->text('producer')->nullable();
             $table->text('type')->nullable();
             $table->text('studio')->nullable();
-            $table->text('genre')->nullable();
-            
+            $table->text('genres')->nullable();
+            $table->text('synopsis')->nullable();
+            $table->text('duration')->nullable();
             $table->integer('total_episode')->default(0);
-            $table->text("slug")->unique();
-            $table->text("thumbnail");
-            $table->text("synopsis");
+            
+            $table->text("thumbnail")->nullable();
             $table->string("status")->default("unknown");
-            $table->text("release_date");
-            $table->json("episodes")->default([]);
+            $table->text("release_date")->default(now());
+            $table->json("metadata")->default("{}");
             $table->timestamps();
         });
     }
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('otaku_animes');
     }
 };
