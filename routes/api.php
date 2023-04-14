@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\RyuController;
 use App\Http\Controllers\API\AnimeApiController;
 use App\Http\Controllers\RAPController;
@@ -44,3 +45,15 @@ Route::controller(RAPController::class)->group(function () {
         });
     });
 });
+
+
+Route::controller(AnimeApiController::class)->prefix("fdev")->group(function(){
+
+  Route::get("/anime/all", "listAnime");
+
+  Route::get("/anime/{id}", "detailAnime");
+
+  Route::get("/anime/{anime}/episode/{id}", "detailEpisode");
+
+});
+
