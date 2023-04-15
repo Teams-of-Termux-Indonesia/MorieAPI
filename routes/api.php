@@ -17,8 +17,10 @@ Route::controller(RyuController::class)->prefix('senpai')->group(function(){
         ";
     })->name('senpai.home');
     Route::get('anime/news','news');
+
     Route::get('gempa/terkini','gempaTerkini');
     Route::get('textpro/{text}','textpro');
+
 });
 
 Route::controller(RAPController::class)->group(function () {
@@ -50,15 +52,16 @@ Route::controller(RAPController::class)->group(function () {
 });
 
 
-
 Route::controller(FdevController::class)->group(function(){
   Route::prefix("fdev")->group(function(){
     Route::prefix("/anime")->group(function(){
       Route::get("/all", "anime_all");
       Route::get("/{uid}", "anime_detail");
-      Route::get("/{uid}/episode/{episode}", "anime_episode");
+      Route::get("/episode/{episode}", "anime_episode");
+    });
+    Route::prefix("/crypto")->group(function(){
+      Route::get("/all", "crypto_all");
     });
   });
 });
-
 
