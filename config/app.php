@@ -181,11 +181,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
-
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -215,6 +214,7 @@ return [
         'RAP_Youtube' => App\Helpers\RAP\RAP_Youtube::class,
         'RAP_Tiktok' => App\Helpers\RAP\RAP_Tiktok::class,
         'RAP_Instagram' => App\Helpers\RAP\RAP_Instagram::class,
+        // 'Image_Lib' => Intervention\Image\Facades\Image::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
