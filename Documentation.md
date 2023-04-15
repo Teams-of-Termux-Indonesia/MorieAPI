@@ -74,12 +74,23 @@ http://localhost/api/rap/tiktok/audio/?url=<url>
   ```
 - Specific Anime
   ```url
-  http://localhost/api/fdev/anime/:uid
+  http://localhost/api/fdev/anime/:uid?lang=<language>
   ```
 
 ____
 
-# TEXT TO IMAGE API
+### Crypto API
+
+- All
+  ```url
+  http://localhost/api/fdev/crypto/all
+  ```
+
+____
+
+____
+
+### Text To Image API
 
 ```url
 http://localhost/api/senpai/textpro/boke?teks=<text>  
