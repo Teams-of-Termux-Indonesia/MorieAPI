@@ -1,15 +1,27 @@
 # Morie API
 
-Morie API is a collection of free APIs that you can use whenever you need, just like the name Morie comes from Japanese which means a forest with many trees, that's how this project describes a collection of APIs or is called a tree.
+```txt
+Morie API is a collection of free APIs that you can use whenever you need,
+just like the name Morie comes from Japanese which means a forest with many trees, 
+that's how this project describes a collection of APIs or is called a tree.
+```
 
-
+____
 
 <div align="center">
-    <img src="/icon.png" alt="icon">
+    <img src="/icon.png" alt="icon" width="450px">
 </div>
 
+____
 
-## get anime news
+## Get recent earthquake [BMKG INDONESIA 🇮🇩]
+
+```url
+http://localhost/api/senpai/gempa/terkini
+```
+
+
+## Get anime news
 
 ```url
 http://localhost/api/senpai/anime/news
@@ -67,3 +79,20 @@ http://localhost/api/rap/youtube/channel/?url=<url>
 http://localhost/api/rap/tiktok/video/?url=<url>
 http://localhost/api/rap/tiktok/audio/?url=<url>
 ```
+
+
+### Otakudesu API
+
+- All
+  ```url
+  http://localhost/api/fdev/anime/all
+  ```
+- Specific Anime
+  ```url
+  http://localhost/api/fdev/anime/:uid
+  ```
+
+____
+
+
+> © Teams of Termux Indonesia 2023

@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "MorieAPI",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Morie API is a collection of free APIs that you can use whenever you need, just like the name Morie comes from Japanese which means a forest with many trees, that's how this project describes a collection of APIs or is called a tree.",
+    "keywords": ["MorieAPI","AnimeApi","TermuxID","Scraper","NewsAnime","ApiAnime","Ytdownloader","FacebookDownloader","InstagramApi","TiktokDownloader","ApiTermuxId","kaorinusantara-API","BeritaAnime"],
     "license": "MIT",
     "require": {
         "php": "^8.1",

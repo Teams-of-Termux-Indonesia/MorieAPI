@@ -32,7 +32,7 @@ class AnimeApiController extends Controller
               $status = $anime->filter("color")->text();
               $desc = $anime->attr("title");
               $link = $anime->attr("href");
-              $id = substr(str_replace(self::URL."/anime/", "", $link), 0, -1);
+              $uid = substr(str_replace(self::URL."/anime/", "", $link), 0, -1);
               
               /* replacement */
               $title = str_replace($status, "", $title);
@@ -41,16 +41,20 @@ class AnimeApiController extends Controller
               $data["title"] = $title;
               $data["description"] = $desc;
               $data["link"] = $link;
-              $data["id"] = $id;
+              $data["uid"] = $uid;
               $data["status"] = strtolower($status !== "" ? $status : "completed");
               
               $this->result["data"][] = $data;
               $this->result["catalog"][$catalog][] = $data;
+              
+              /* store to database */
+              if (!Anime::where("uid", $uid)->first()) Anime::create($data);
             });
           });
           
           return $this->result;
         } catch (\Exception $e) {
+          if (!is_production()) dd($e);
           abort(404);
         }
         
@@ -61,9 +65,10 @@ class AnimeApiController extends Controller
         $client = new Client();
         
         try {
-          $page = $client->request("GET", self::URL . "/anime/". $request->id);
+          $page = $client->request("GET", self::URL . "/anime/". $request->uid);
           
           $this->result["data"]["thumbnail"] = $page->filter(".fotoanime img")->attr("src");
+          $this->result["data"]["uid"] = $request->uid;
           $this->result["time"] = time();
           
           $page->filter(".venser .fotoanime .infozin .infozingle p")->each(function ($info){
@@ -77,15 +82,19 @@ class AnimeApiController extends Controller
               )
             );
             $value = trim(substr(str_replace($info->filter("b")->text(), "", $info->filter("span")->text()), 1));
+            
+            /* check key */
+            if ($key === "duration") $value = GoogleTranslate::trans($value, "en", "id");
+            
             $this->result["data"][$key] = $value;
           });
           
           $synopsis = $page->filter(".sinopc")->text();
           try {
             if ($request->lang) $this->result["data"]["synopsis"] = GoogleTranslate::trans($synopsis, $request->lang, "id");
+            else $this->result["data"]["synopsis"] = $synopsis;
           } catch (\Exception $e) {
             if ($request->lang) $this->result["data"]["synopsis"] = GoogleTranslate::trans($synopsis, "en", "id");
-            else $this->result["data"]["synopsis"] = $synopsis;
           }
           
           $page->filter(".episodelist")->each(function ($episodeContainer){
@@ -119,6 +128,11 @@ class AnimeApiController extends Controller
             
           });
           
+          /* update data */
+          $anime = Anime::where("uid", $request->uid)->first();
+          if ($anime) $anime->update($this->result["data"]);
+          else Anime::create($this->result["data"]);
+          
           return $this->result;
         } catch (\Exception $e) {
           if (is_production()) dd($e);
@@ -134,5 +148,20 @@ class AnimeApiController extends Controller
         } catch (\Exception $e) {
         }
     }
+    
+    public function searchAnime (Request $request) {
+      $client = new Client();
+      try {
+        $page = $client->request("GET", self::URL . sprintf("/?s=%s&post_type=anime", $request->q));
+        $total_page = 1;
+        
+      } catch (\Exception $e) {
+        if (!is_production()) dd($e);
+        abort(404);
+      }
+    }
+    
+   
+    
     
 }
