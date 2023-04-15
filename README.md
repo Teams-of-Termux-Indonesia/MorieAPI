@@ -14,9 +14,31 @@ ____
 
 ____
 
+<details>
+  <summary>All Features</summary>
+  
+  <pre>
+  + FACEBOOK DOWNLOADER API
+  + YOUTEBE DOWNLOADER API
+  + TIKTOK DOWNLOADER API
+  + BMKG  API INDONESIA
+  + OTAKUDESU API
+  + NEWS ANIME  API  [kaorinusantara]
+  + GMAIL API
+  + GET IP ADDRESS API 
+
+  </pre>
+
+</details>
+
+_____
 
 [API Documentation](Documentation.md)
 
+_____
 
+
+____
 
 > © Teams of Termux Indonesia 2023
+____
