@@ -13,10 +13,10 @@ class RAPServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        require_once app_path() . '/Helpers/RAP/RAP_Facebook.php';
-        require_once app_path() . '/Helpers/RAP/RAP_Youtube.php';
-        require_once app_path() . '/Helpers/RAP/RAP_Tiktok.php';
-        require_once app_path() . '/Helpers/RAP/RAP_Instagram.php';
+        require_once app_path() . "/Helpers/RAP/RAP_Facebook.php";
+        require_once app_path() . "/Helpers/RAP/RAP_Youtube.php";
+        require_once app_path() . "/Helpers/RAP/RAP_Tiktok.php";
+        require_once app_path() . "/Helpers/RAP/RAP_Instagram.php";
     }
 
     /**

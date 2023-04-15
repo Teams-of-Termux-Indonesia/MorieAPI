@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      |-----------------------------------------------------------------------
      | Symfony Http Client Configuration
@@ -13,7 +12,7 @@ return [
      | @see {@link https://symfony.com/doc/current/http_client.html}
      */
 
-    'client' => [
-        'max_redirects' => 0
+    "client" => [
+        "max_redirects" => 0,
     ],
 ];
