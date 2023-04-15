@@ -26,6 +26,7 @@ ____
   + NEWS ANIME  API  [kaorinusantara]
   + GMAIL API
   + GET IP ADDRESS API 
+  + INSTAGRAM API
 
   </pre>
 
