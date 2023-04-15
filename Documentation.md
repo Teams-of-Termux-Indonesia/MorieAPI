@@ -79,3 +79,11 @@ http://localhost/api/rap/tiktok/audio/?url=<url>
 
 ____
 
+# TEXT TO IMAGE API
+
+```url
+http://localhost/api/senpai/textpro/boke?teks=<text>  
+```
+
+
+____
