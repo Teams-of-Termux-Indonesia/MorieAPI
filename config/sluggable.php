@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /**
      * What attributes do we use to build the slug?
      * This can be a single field, like "name" which will build a slug from:
@@ -18,7 +17,7 @@ return [
      * Defaults to null, which uses the toString() method on your model.
      */
 
-    'source' => null,
+    "source" => null,
 
     /**
      * The maximum length of a generated slug.  Defaults to "null", which means
@@ -26,7 +25,7 @@ return [
      * want to make sure your slugs aren't too long.
      */
 
-    'maxLength' => null,
+    "maxLength" => null,
 
     /**
      * If you are setting a maximum length on your slugs, you may not want the
@@ -41,7 +40,7 @@ return [
      *   "my source string" -> "my-source-st"
      */
 
-    'maxLengthKeepWords' => true,
+    "maxLengthKeepWords" => true,
 
     /**
      * If left to "null", then use the cocur/slugify package to generate the slug
@@ -59,13 +58,13 @@ return [
      *    'method' => array('Str','slug'),
      */
 
-    'method' => null,
+    "method" => null,
 
     /**
      * Separator to use when generating slugs.  Defaults to a hyphen.
      */
 
-    'separator' => '-',
+    "separator" => "-",
 
     /**
      * Enforce uniqueness of slugs?  Defaults to true.
@@ -77,7 +76,7 @@ return [
      *     my-slug-2
      */
 
-    'unique' => true,
+    "unique" => true,
 
     /**
      * If you are enforcing unique slugs, the default is to add an
@@ -87,8 +86,8 @@ return [
      * "similar" slugs.  The closure should return the new unique
      * suffix to append to the slug.
      */
-    
-    'uniqueSuffix' => null,
+
+    "uniqueSuffix" => null,
 
     /**
      * What is the first suffix to add to a slug to make it unique?
@@ -99,7 +98,7 @@ return [
      *   - my-post-2
      *   - my-post-3
      */
-    'firstUniqueSuffix' => 2,
+    "firstUniqueSuffix" => 2,
 
     /**
      * Should we include the trashed items when generating a unique slug?
@@ -108,7 +107,7 @@ return [
      * If set to "true", then uniqueness is enforced across trashed and existing models.
      */
 
-    'includeTrashed' => false,
+    "includeTrashed" => false,
 
     /**
      * An array of slug names that can never be used for this model,
@@ -134,7 +133,7 @@ return [
      * and continue from there.
      */
 
-    'reserved' => null,
+    "reserved" => null,
 
     /**
      * Whether to update the slug value when a model is being
@@ -146,13 +145,12 @@ return [
      * is probably not a good idea from an SEO point of view.
      * Only set this to true if you understand the possible consequences.
      */
-    
-    'onUpdate' => false,
+
+    "onUpdate" => false,
 
     /**
      * If the default slug engine of cocur/slugify is used, this array of
      * configuration options will be used when instantiating the engine.
      */
-    'slugEngineOptions' => [],
-
+    "slugEngineOptions" => [],
 ];

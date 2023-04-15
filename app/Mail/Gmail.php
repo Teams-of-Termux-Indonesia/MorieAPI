@@ -28,9 +28,7 @@ class Gmail extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: $this->data['title'],
-        );
+        return new Envelope(subject: $this->data["title"]);
     }
 
     /**
@@ -39,8 +37,8 @@ class Gmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.send',
-            with: ['body' => $this->data['message']]
+            view: "mail.send",
+            with: ["body" => $this->data["message"]]
         );
     }
 
