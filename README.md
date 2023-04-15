@@ -27,6 +27,7 @@ ____
   + GMAIL API
   + GET IP ADDRESS API 
   + INSTAGRAM API
+  + TEXT PRO (TEXT TO IMAGE)  API
 
   </pre>
 

@@ -15,9 +15,10 @@ Route::controller(RyuController::class)->prefix('senpai')->group(function(){
         prefix : /senpai
         </pre>
         ";
-    });
+    })->name('senpai.home');
     Route::get('anime/news','news');
     Route::get('gempa/terkini','gempaTerkini');
+    Route::get('textpro/{text}','textpro');
 });
 
 Route::controller(RAPController::class)->group(function () {
