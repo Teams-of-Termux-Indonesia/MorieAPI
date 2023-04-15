@@ -1,5 +1,5 @@
 {
-    "name": "MorieAPI",
+    "name": "laravel/laravel",
     "type": "project",
     "description": "Morie API is a collection of free APIs that you can use whenever you need, just like the name Morie comes from Japanese which means a forest with many trees, that's how this project describes a collection of APIs or is called a tree.",
     "keywords": ["MorieAPI","AnimeApi","TermuxID","Scraper","NewsAnime","ApiAnime","Ytdownloader","FacebookDownloader","InstagramApi","TiktokDownloader","ApiTermuxId","kaorinusantara-API","BeritaAnime"],
@@ -8,6 +8,7 @@
         "php": "^8.1",
         "cviebrock/eloquent-sluggable": "^10.0",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^2.7",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
