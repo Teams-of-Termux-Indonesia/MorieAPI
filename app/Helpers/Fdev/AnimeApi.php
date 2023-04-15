@@ -129,12 +129,20 @@ class AnimeApi
         }
     }
     
-    public function anime_episode ()
+    public function anime_episode (Request $request)
     {
         $client = new Client();
         try {
-          $client->request("GET", self::URL + "/anime/");
+          $page = $client->request("GET", self::URL . "/episode/" .$request->episode);
+          return json_encode($page);
+          $title = $page->filter("#venkonten .download h4")->text();
+          $title = trim(explode("episode")[2]);
+          
+          $this->result["title"] = $title;
+          return $this->result;
         } catch (\Exception $e) {
+          if (!is_production()) throw $e;
+          abort(404);
         }
     }
     

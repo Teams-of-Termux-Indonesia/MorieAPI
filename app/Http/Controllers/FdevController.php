@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Helpers\Fdev\AnimeApi;
+use App\Helpers\Fdev\CryptoApi;
 
 class FdevController extends Controller
 {
@@ -19,5 +20,17 @@ class FdevController extends Controller
     {
       $AnimeApi = new AnimeApi();
       return $AnimeApi->anime_detail($request);
+    }
+    
+    public function anime_episode (Request $request) 
+    {
+      $AnimeApi = new AnimeApi();
+      return $AnimeApi->anime_episode($request);
+    }
+    
+    public function crypto_all (Request $request) 
+    {
+      $CryptoApi = new CryptoApi();
+      return $CryptoApi->assets_all($request);
     }
 }
