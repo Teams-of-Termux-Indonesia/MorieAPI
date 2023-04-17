@@ -7,6 +7,8 @@ class ScrapAnime
     private $springs = [];
     private $news = [];
     private $looks = [];
+    protected $table = "scrap_animes";
+    
     public function teks($teks)
     {
         $tr = new GoogleTranslate();
