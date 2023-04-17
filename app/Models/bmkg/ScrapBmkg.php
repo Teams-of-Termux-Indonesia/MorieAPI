@@ -1,8 +1,10 @@
 <?php
 namespace APP\Models\bmkg;
 use Goutte\Client;
+
 class ScrapBmkg{
-    private $gempa_terkini=[];
+    protected $table = "scrap_earthquakes";
+    private $gempa_terkini = [];
     public function getGempaTerkini(){
         $site = $this -> get('https://www.bmkg.go.id/gempabumi-terkini.html');
         $site -> filter("tbody tr")->each(function($childen){

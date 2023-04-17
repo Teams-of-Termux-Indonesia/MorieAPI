@@ -12,11 +12,10 @@ Route::controller(RyuController::class)
     ->group(function () {
         Route::get("/", function () {
             echo "
-        <pre>
-        MORIE API 
-        prefix : /senpai
-        </pre>
-        ";
+              <pre>
+              MORIE API 
+              prefix : /senpai
+              </pre>";
         })->name("senpai.home");
         Route::get("anime/news", "news");
 
@@ -63,4 +62,18 @@ Route::controller(FdevController::class)->group(function () {
             Route::get("/all", "crypto_all");
         });
     });
+});
+
+
+Route::fallback(function (){
+  return response()->json([
+    "code" => 404,
+    "status" => false,
+    "message" => "invalid route",
+    "suggestion" => "please see our documentation or repository, for look available routes",
+    "links" => [
+      "repository" => env("GITHUB_REPO", "#"),
+      "documentation" => env("DOCS_URL", "#")
+    ]
+  ]);
 });
